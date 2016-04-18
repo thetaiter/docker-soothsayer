@@ -1,0 +1,10 @@
+version: "2"
+services:
+  consul:
+    image: progrium/consul:latest
+    restart: always
+    hostname: consul
+    ports:
+      - "${CONSUL_IP}:8500:8500"
+      - "${CONSUL_IP}:8600:53/udp"
+    command: "-server -bootstrap -advertise ${CONSUL_IP} -log-level debug"
